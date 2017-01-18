@@ -15,14 +15,15 @@ _VERSION = 1  # API version
 
 @camera.route("/v{}/ocr".format(_VERSION), methods=["POST"])
 def ocr():
-    FileStorage(stream=request.files['data']).save(os.path.join('/Users/pdm640/workspaces/git/ocr/ocr/imgs','input.png'))
+    dir = os.path.dirname(os.path.dirname(__file__))
+    FileStorage(stream=request.files['data']).save(os.path.join(dir, '/imgs', 'input.png'))
 
-    image = Image.open('/Users/pdm640/workspaces/git/ocr/ocr/imgs/input.png')
+    image = Image.open('../imgs/input.png')
 
     grayscale = image.convert('L')
     sharpen = ImageEnhance.Sharpness(grayscale).enhance(20)
 
-    sharpen.save('/Users/pdm640/workspaces/git/ocr/ocr/imgs/sharpen.png')
+    sharpen.save('../imgs/sharpen.png')
 
 
     # crop = sharpen.crop((0, 90, 320, 150))

@@ -11,3 +11,10 @@
     <img id="photo" alt="The screen capture will appear in this box.">
   </div>
 {% endblock %}
+
+{% block cardAutoFill %}
+	<label for="nameoncard">Name on Card</label>
+	<input type="text" id="nameoncard" name="nameoncard" autocomplete="cc-name">
+	<label for="ccnumber">Credit Card Number</label>
+	<input type="text" id="ccnumber" name="ccnumber" autocomplete="cc-number"
+{% endblock %}
